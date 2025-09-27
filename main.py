@@ -1,12 +1,9 @@
-from pandas import DataFrame
-import pandas as pd
-import read_tables as rd
+import util as ut
 
 def main():
-    tables: list[DataFrame] = []
-    for file in rd.DATA_FILES:
-        table = rd.get_table(file)
-        tables.append(table)
+    points = ut.get_points(ut.DATA_FILES[0])
+    for point in points:
+        print(point)
 
     
 if __name__ == "__main__":
