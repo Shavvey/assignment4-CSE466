@@ -1,7 +1,7 @@
 from util import Point
 
 
-class LinerReg:
+class LinearReg:
     """Class that represents a linear regression of a dataset"""
 
     m: float
@@ -12,6 +12,18 @@ class LinerReg:
         self.m = m
         self.b = b
 
+    def predict(self, x: float) -> float:
+        """Get prediction from given x value"""
+        return (self.m * x) + self.b
+
     def mse(self, points: list[Point]) -> float:
-        """Return the mean-square-error (mse) given x-y points in `df`"""
-        return 0
+        """Return the mean-square-error (mse) given x-y points"""
+        error = 0.00
+        for point in points:
+            pred = self.predict(point.x)
+            actual = point.y
+            error += (actual - pred) ** 2
+        # normalize error based on number of points
+        n = len(points)
+        error /= n
+        return error
