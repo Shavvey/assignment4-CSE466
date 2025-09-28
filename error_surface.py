@@ -16,10 +16,21 @@ def plot_mse(file: str, samples: int, interval: tuple[int, int]):
     # create 2D mesh given our sampling points
     X, Y = np.meshgrid(ms, bs)
     Z = np.empty((samples, samples))
+    min = [X[0], Y[0], 1 << 32]
     for i, m in enumerate(ms):
         for j, b in enumerate(bs):
-            lr = LinearReg(m ,b)
+            lr = LinearReg(m, b)
             mse = lr.mse(points)
-            Z[i][j] = mse
+            error = 20 * np.log10(mse)
+            if min[2] > error:
+                min[0] = m
+                min[1] = b
+                min[2] = error
+            Z[i][j] = error
+    print(min)
     surf = ax.plot_surface(X, Y, Z, cmap=cm.get_cmap("coolwarm"))
+    print(LinearReg(0.30, 4).mse(points))
+    ax.set_xlabel("Slope (m)")
+    ax.set_ylabel("Y-intercept (b)")
+    ax.set_zlabel("Error (mse)")
     plt.show()
