@@ -1,10 +1,9 @@
-import util as ut
+import error_surface as es
+import util as util
 
 def main():
-    points = ut.get_points(ut.DATA_FILES[0])
-    for point in points:
-        print(point)
-
+    es.plot_mse(util.DATA_FILES[0], 1000, (-10,10))
+    
     
 if __name__ == "__main__":
     main()
