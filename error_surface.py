@@ -7,7 +7,7 @@ from matplotlib import cm
 
 def plot_mse(file: str, samples: int, interval: tuple[int, int]):
     """Given list of points from file (`data/table1.html` for example),
-    get surface plot of mse"""
+    get surface plot of mse given intervals for potential linear regression models"""
     ms = np.linspace(interval[0], interval[1], samples)
     bs = np.linspace(interval[0], interval[1], samples)
     points = util.get_points(file)
@@ -22,15 +22,15 @@ def plot_mse(file: str, samples: int, interval: tuple[int, int]):
             lr = LinearReg(m, b)
             mse = lr.mse(points)
             error = 20 * np.log10(mse)
+            # find minimum error among tested models
             if min[2] > error:
                 min[0] = m
                 min[1] = b
                 min[2] = error
             Z[j][i] = error
     print(min)
-    surf = ax.plot_surface(X, Y, Z, cmap=cm.get_cmap("coolwarm"))
-    print(LinearReg(7.7,-3.5).mse(points))
+    ax.plot_surface(X, Y, Z, cmap=cm.get_cmap("coolwarm"))
     ax.set_xlabel("Slope (m)")
     ax.set_ylabel("Y-intercept (b)")
-    ax.set_zlabel("Error (mse)")
+    ax.set_zlabel("Error (mse, log scale)")
     plt.show()
