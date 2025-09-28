@@ -26,10 +26,10 @@ def plot_mse(file: str, samples: int, interval: tuple[int, int]):
                 min[0] = m
                 min[1] = b
                 min[2] = error
-            Z[i][j] = error
+            Z[j][i] = error
     print(min)
     surf = ax.plot_surface(X, Y, Z, cmap=cm.get_cmap("coolwarm"))
-    print(LinearReg(0.30, 4).mse(points))
+    print(LinearReg(7.7,-3.5).mse(points))
     ax.set_xlabel("Slope (m)")
     ax.set_ylabel("Y-intercept (b)")
     ax.set_zlabel("Error (mse)")
