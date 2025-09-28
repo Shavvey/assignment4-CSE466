@@ -22,6 +22,4 @@ def plot_mse(file: str, samples: int, interval: tuple[int, int]):
             mse = lr.mse(points)
             Z[i][j] = mse
     surf = ax.plot_surface(X, Y, Z, cmap=cm.get_cmap("coolwarm"))
-    m = LinearReg(-10,10)
-    print(m.mse(points))
     plt.show()
