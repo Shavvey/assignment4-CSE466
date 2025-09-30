@@ -13,7 +13,7 @@ def get_table(file: str) -> DataFrame:
 
 
 class Point:
-    """Helper class to represent the 2D points we expect dataframe"""
+    """Helper class to represent the 2D points we expect from dataframe"""
 
     x: float
     y: float
