@@ -18,7 +18,7 @@ def plot_full_mse(file: str, samples: int, interval: tuple[int, int]):
     min = [X[0], Y[0], 1 << 32]
     for i, a in enumerate(aas):
         for j, b in enumerate(bs):
-            qr = QuadReg(a,b,C)
+            qr = QuadReg(a, b, C)
             mse = qr.mse(points)
             error = mse
             # find minimum error among tested models
@@ -47,7 +47,7 @@ def plot_fhalf_mse(file: str, samples: int, interval: tuple[int, int]):
     aas = np.linspace(interval[0], interval[1], samples)
     bs = np.linspace(interval[0], interval[1], samples)
     points = util.get_points(file)
-    points = points[0:len(points)//2]
+    points = points[0 : len(points) // 2]
     fig = plt.figure()
     ax1 = fig.add_subplot(121, projection="3d")
     # create 2D mesh given our sampling points
@@ -56,7 +56,7 @@ def plot_fhalf_mse(file: str, samples: int, interval: tuple[int, int]):
     min = [X[0], Y[0], 1 << 32]
     for i, a in enumerate(aas):
         for j, b in enumerate(bs):
-            qr = QuadReg(a,b,C)
+            qr = QuadReg(a, b, C)
             mse = qr.mse(points)
             error = mse
             # find minimum error among tested models
@@ -79,12 +79,13 @@ def plot_fhalf_mse(file: str, samples: int, interval: tuple[int, int]):
     ax2.set_zlabel("Error (mse, log scale)")
     plt.show()
 
+
 def plot_lhalf_mse(file: str, samples: int, interval: tuple[int, int]):
     C = 3
     aas = np.linspace(interval[0], interval[1], samples)
     bs = np.linspace(interval[0], interval[1], samples)
     points = util.get_points(file)
-    points = points[0:len(points)//2]
+    points = points[0 : len(points) // 2]
     fig = plt.figure()
     ax1 = fig.add_subplot(121, projection="3d")
     # create 2D mesh given our sampling points
@@ -93,7 +94,7 @@ def plot_lhalf_mse(file: str, samples: int, interval: tuple[int, int]):
     min = [X[0], Y[0], 1 << 32]
     for i, a in enumerate(aas):
         for j, b in enumerate(bs):
-            qr = QuadReg(a,b,C)
+            qr = QuadReg(a, b, C)
             mse = qr.mse(points)
             error = mse
             # find minimum error among tested models
