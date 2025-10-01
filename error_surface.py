@@ -46,7 +46,7 @@ def plot_fhalf_mse(file: str, samples: int, interval: tuple[int, int]):
     bs = np.linspace(interval[0], interval[1], samples)
     points = util.get_points(file)
     plen = len(points)
-    points = points[:plen//2]
+    points = points[: plen // 2]
     fig = plt.figure()
     ax1 = fig.add_subplot(121, projection="3d")
     # create 2D mesh given our sampling points
@@ -78,12 +78,13 @@ def plot_fhalf_mse(file: str, samples: int, interval: tuple[int, int]):
     ax2.set_zlabel("Error (mse, log scale)")
     plt.show()
 
+
 def plot_lhalf_mse(file: str, samples: int, interval: tuple[int, int]):
     ms = np.linspace(interval[0], interval[1], samples)
     bs = np.linspace(interval[0], interval[1], samples)
     points = util.get_points(file)
     plen = len(points)
-    points = points[:plen//2]
+    points = points[plen // 2 :]
     fig = plt.figure()
     ax1 = fig.add_subplot(121, projection="3d")
     # create 2D mesh given our sampling points
@@ -108,7 +109,7 @@ def plot_lhalf_mse(file: str, samples: int, interval: tuple[int, int]):
     ax1.set_zlabel("Error (mse)")
     ax2 = fig.add_subplot(122, projection="3d")
     # apply the log-scale
-    Z = 10*np.log10(Z)
+    Z = 10 * np.log10(Z)
     ax2.plot_surface(X, Y, Z, cmap=cm.get_cmap("coolwarm"))
     ax2.set_xlabel("Slope (m)")
     ax2.set_ylabel("Y-intercept (b)")
