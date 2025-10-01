@@ -5,9 +5,7 @@ import util as util
 
 
 def main():
-    pp.plot_points_qr(util.DATA_FILES[0])
-
-    
+    esq.plot_full_mse(util.DATA_FILES[1], 1000, (-5, 5))
 
 
 if __name__ == "__main__":

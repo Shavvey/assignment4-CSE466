@@ -85,7 +85,7 @@ def plot_lhalf_mse(file: str, samples: int, interval: tuple[int, int]):
     aas = np.linspace(interval[0], interval[1], samples)
     bs = np.linspace(interval[0], interval[1], samples)
     points = util.get_points(file)
-    points = points[0 : len(points) // 2]
+    points = points[len(points) // 2:]
     fig = plt.figure()
     ax1 = fig.add_subplot(121, projection="3d")
     # create 2D mesh given our sampling points

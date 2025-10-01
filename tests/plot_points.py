@@ -8,6 +8,8 @@ def plot_points_lr(file: str):
     ax = fig.add_subplot(111)
     # get the points from the file
     points = util.get_points(file)
+    # sort the points in ascending order of x-coord
+    points = sorted(points, key = lambda p : p.x)
     xs = [p.x for p in points]
     ys = [p.y for p in points]
     ax.scatter(xs, ys, color="g")
@@ -23,6 +25,7 @@ def plot_points_qr(file: str):
     ax = fig.add_subplot(111)
     # get the points from the file
     points = util.get_points(file)
+    # sort the points in ascending order of x-coord
     points = sorted(points, key = lambda p : p.x)
     xs = [p.x for p in points]
     ys = [p.y for p in points]
