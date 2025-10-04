@@ -6,7 +6,6 @@ import util as util
 
 def main():
     esq.plot_fhalf_mse(util.DATA_FILES[1], 1000, (-5,5))
-    esq.plot_lhalf_mse(util.DATA_FILES[1], 1000, (-5,5))
 
 
 if __name__ == "__main__":
