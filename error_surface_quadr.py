@@ -47,7 +47,9 @@ def plot_fhalf_mse(file: str, samples: int, interval: tuple[int, int]):
     aas = np.linspace(interval[0], interval[1], samples)
     bs = np.linspace(interval[0], interval[1], samples)
     points = util.get_points(file)
-    points = points[0 : len(points) // 2]
+    midpoint = len(points) // 2
+    # use points at intervalM: [0, midpoint + 1)
+    points = points[0 : midpoint + 1]
     fig = plt.figure()
     ax1 = fig.add_subplot(121, projection="3d")
     # create 2D mesh given our sampling points
@@ -85,7 +87,9 @@ def plot_lhalf_mse(file: str, samples: int, interval: tuple[int, int]):
     aas = np.linspace(interval[0], interval[1], samples)
     bs = np.linspace(interval[0], interval[1], samples)
     points = util.get_points(file)
-    points = points[len(points) // 2:]
+    midpoint = len(points) // 2
+    # use points between [midpoint+1, len)
+    points = points[midpoint + 1 :]
     fig = plt.figure()
     ax1 = fig.add_subplot(121, projection="3d")
     # create 2D mesh given our sampling points
